@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  executor:
+    image: custom-compute-subnet-executor:latest
+    runtime: sysbox-runc
+    gpus: all
+    environment:
+      - MINER_HOTKEY_SS58_ADDRESS=${MINER_HOTKEY_SS58_ADDRESS}
+      - INTERNAL_PORT=${INTERNAL_PORT}
+      - EXTERNAL_PORT=${EXTERNAL_PORT}
+      - SSH_PORT=${SSH_PORT}
+      - SSH_PUBLIC_PORT=${SSH_PUBLIC_PORT}
+      - RENTING_PORT_RANGE=${RENTING_PORT_RANGE}
+    ports:
+      - "${EXTERNAL_PORT}:8080"
+      - "${RENTING_PORT_RANGE}"
+      - "${SSH_PORT}:22"
+    volumes:
+      - ./data:/workspace/data
+      - ./.env:/app/compute-subnet/neurons/executor/.env
+    restart: unless-stopped
+    privileged: true
