@@ -7,7 +7,7 @@ WORKDIR /app/compute-subnet
 # Step 3: Install required tools
 RUN chmod +x scripts/install_executor_on_ubuntu.sh && \
     sed -i 's/sudo //g' scripts/install_executor_on_ubuntu.sh && \
-    ./scripts/install_executor_on_ubuntu.sh
+    echo "" | ./scripts/install_executor_on_ubuntu.sh
 
 # Step 6: Prepare environment template
 RUN cp .env.template .env
