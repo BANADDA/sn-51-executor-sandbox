@@ -10,7 +10,7 @@ RUN chmod +x scripts/install_executor_on_ubuntu.sh && \
     echo "" | ./scripts/install_executor_on_ubuntu.sh
 
 # Step 6: Prepare environment template
-RUN cp .env.template .env
+RUN if [ -f .env.template ]; then cp .env.template .env; else echo "No .env.template found, creating basic .env"; echo "# Environment configuration" > .env; fi
 WORKDIR /app/compute-subnet/neurons/executor
 
 # Expose default ports (configurable via .env)
