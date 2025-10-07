@@ -55,10 +55,10 @@ Update the following variables:
 Pull the image:
 
 ```bash
-docker pull <registry>/custom-compute-subnet-executor:latest
+docker pull ghcr.io/BANADDA/custom-compute-subnet-executor:latest
 ```
 
-Replace `<registry>` with your platform's registry (e.g., `docker.io/your-org`).
+This pulls from GitHub Container Registry (GHCR) under the BANADDA organization.
 
 Start the sandbox:
 
